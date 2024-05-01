@@ -130,5 +130,63 @@
 ## 물리적 데이터 모델
 ![논리/물리적 모델](./shopDBphysical.png)
 
-            
 
+
+## SQL (Structed Query Language)
+    - 구조화된 질의 언어
+    - 관계형 데이터베이스(RDBMS)에서 데이터 관리를 위해 사용하는 표준화된 언어
+
+1. 데이터 정의 언어(DDL)
+    - Data Definition Language
+    - CREATE, DROP, ALTER, TRUNCATE, RENATE
+2. 데이터 조작 언어(DML)
+    - Data Manipulation Language
+    - INSERT, UPDATE, DELETE
+3. 데이터 질의 언어(DQL)
+    - Data Query Language
+    - SELECT
+    - DML로 포함이 되는 구분도 존재한다.
+4. 데이터 제어 언어(DCL)
+    - Data Control Language
+    - GRANT, REVOKE
+5. 트랜잭션 제어 언어(TCL)
+    - Transaction Control Language
+    - COMMIT, ROLLBACK, SAVEPOINT
+            
+## 제약조건
+- Primary key (PK)
+    - 각 행을 유일하게 식별할 수 있는 열(열의 조합)
+    - Not Null과 Unique의 속성을 갖는다(개체 무결성)
+    - 비어 있어도 안되고, 값이 중복되도 안됨.
+- Not Null (NN)
+    - 해당 컬러멩는 반드시 유효한 값이 존재해야 함
+    - Null값이 허용되지 않음
+- Unique (UQ)
+    - 해당 컬럼의 각 행은 서로 다른 고유한 값을 가져야함
+    - Null은 가능
+
+## 데이터 타입
+1. 숫자형 데이터 타입
+    - **INT**, INTEGER : 4byte 정수
+    - DECIMAL(M, N) : 고정 소수점 숫자
+        - M 총자릿수, N 소수점 자리수
+    - FLOAT(4byte), DOUBLE(8byte) : 부동 소수점 숫자
+2. 문자열 데이터 타입
+    - CHAR(N) : 고정 길이 문자열, N은 문자열 길이
+    - **VARCHAR(N)** : 가변 길이 문자열
+    - TEXT, MIDIUMTEXT, LONGTEXT : 긴 텍스트 저장시
+3. 날짜/시간 데이터 타입
+    - DATE : 'YYYY-MM-DD' 연-월-일
+    - TIME : 'HH:MM:SS' 시-분-초
+    - DATETIME : 'YYYY-MM-DD HH:MM:SS'
+    - TIMESTAMP : 1970-01-01 기준 32비트 정수 유닉스 기반 날짜시간정보 저장
+4. 이진 데이터 타입
+    - BINARY(N) : 고정길이 이진데이터
+    - VARBINARY(N) : 가변길이 이진데이터
+    - **BLOB** : Big Large OBject, 4GB 저장
+5. 논리 데이터 타입
+    - BOOLEAN : TRUE, FALSE
+6. 열거형 데이터 타입
+    - ENUM : 미리 정의된 값 중 하나를 저장
+        - ENUM('봄', '여름', '가을', '겨울')
+- 도메인 무결성 제약조건 : 각 속성은 도메인(데이터타입)에 지정된 값만 가져야한다
