@@ -38,32 +38,37 @@
 
 문제 3: `BorrowRecords` 테이블을 생성하세요. 이 테이블은 `Members`와 `Books` 테이블에 대한 외래 키 제약 조건을 포함해야 합니다.
 */
+
 CREATE SCHEMA LibraryManagement;
 USE LibraryManagement;
 
+-- 외래키를 포함하지 않은 테이블부터 생성한다.
+
 CREATE TABLE books (
 	BookID INT PRIMARY KEY  AUTO_INCREMENT UNIQUE,
-    Title VARCHAR(50) NOT NULL,
-    Author VARCHAR(50) NOT NULL,
+    Title VARCHAR(255) NOT NULL,
+    Author VARCHAR(255) NOT NULL,
     PublishedYear INT,
-    Genre VARCHAR(50) NOT NULL,
+    Genre VARCHAR(255) NOT NULL,
 	CHECK (PublishedYear >= 1500)
 );
 
 CREATE TABLE Members(
 	MemberID INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
-    FirstName VARCHAR(50) NOT NULL,
-    LastName VARCHAR(50) NOT NULL,
-    Email VARCHAR(50) NOT NULL UNIQUE,
-    MembershipDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    FirstName VARCHAR(255) NOT NULL,
+    LastName VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL UNIQUE,
+    MembershipDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CHECK (FirstName !=""), -- 빈 문자열을 포함하지 않는다.
+    CHECK (LastName !="")
 );
 
 CREATE TABLE BorrowRecords(
 	RecordID INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
     MemberID INT, -- 외래 키
     BookID INT,  -- 외래 키
-    BorrowDate TIMESTAMP,
-    ReturnDate TIMESTAMP,
+    BorrowDate DATE,
+    ReturnDate DATE,
     FOREIGN KEY(MemberID) REFERENCES Members(MemberID),
     FOREIGN KEY(BookID) REFERENCES books(BookID)
 );
