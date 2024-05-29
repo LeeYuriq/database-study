@@ -4,6 +4,6 @@ use shopdb;
 -- 테이블 확인
 SHOW TABLES;
 
--- 테이블 조회ㄴ
+-- 테이블 조회
 SELECT * FROM membertbl;
 SELECT * FROM producttbl;

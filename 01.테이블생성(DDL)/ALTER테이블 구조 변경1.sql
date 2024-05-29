@@ -23,7 +23,7 @@ ALTER TABLE employees
     
 -- 3. CHANGE 컬럼명 변경하기
 ALTER TABLE employees
-	CHANGE COLUMN first_name FIRSTNAME varchar(14);
+	CHANGE COLUMN first_name 기존의 제약조건 FIRSTNAME varchar(14);
     
 -- 4. MODIFY 데이터 타입 변경하기
 ALTER TABLE employees
@@ -32,7 +32,7 @@ ALTER TABLE employees
 -- 5. RENAME 테이블 이름 변경하기
 ALTER TABLE employees
 	RENAME TO employees_ABC;
-ALTER TABLE employees_ABC
+ALTER TABLE employees_ABC	
 	RENAME TO employees;
     
 DESC employees;
